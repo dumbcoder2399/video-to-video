@@ -11,6 +11,7 @@ sys.path.insert(1,'/home/anushka/PersonalProjects/Amazon/VID2VID/')
 import complete
 your_media_root = settings.MEDIA_ROOT
 
+
 class Home(TemplateView):
     template_name = 'home.html'
 
@@ -45,6 +46,7 @@ def Dub_Video(video_path,video_inputLang,video_outputLang):
     #you should return output video path eg. Videos/example.mp4
     output_video_path=complete.changemavoice(video_path,video_inputLang,video_outputLang)
     return output_video_path
+
 
 def view_Video(request,pk):
     original_video = Video.objects.get(pk=pk)
