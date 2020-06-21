@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% block content_header %}
+      <h2>Translated Videos</h2>
+    {% endblock %}
+    {% for video in videos %}
+    <video width='45%' height='70%' controls>
+      <source src="../../media/Videos/{{video}}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video> &nbsp &nbsp &nbsp 
+    {% endfor %}
+    </br></br>
+    {% block content_h %}
+      <h2>Low Quality Videos</h2>
+    {% endblock %}
+    {% for video in videosLQ %}
+      <video width='45%' height='70%' controls>
+        <source src="../../media/Videos/{{video}}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video> &nbsp &nbsp &nbsp
+    {% endfor %}
+{% endblock %}

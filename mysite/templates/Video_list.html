@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Videos</h2>
+    <p>
+      <a href="{% url 'upload_Video' %}" class="btn btn-primary">Upload Video</a>
+    </p>
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Download</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for Video in Videos %}
+        <tr>
+          <td>{{ Video.title }}</td>
+          <td>{{ Video.name }}</td>
+          <td>
+            <a href="/view_Video/{{Video.pk}}" class="btn btn-primary btn-sm" target="_blank">
+            <!-- <a href="{{ Video.video.url }}" class="btn btn-primary btn-sm" target="_blank"> -->
+              View Video
+            </a>
+          </td>
+          <td>
+            <form method="post" action="{% url 'delete_Video' Video.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
